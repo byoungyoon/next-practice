@@ -1,11 +1,15 @@
-"use client";
+'use client';
 
-import style from "./post.module.css";
-import cx from "classnames";
+import style from './post.module.css';
+import cx from 'classnames';
 
-export default function ActionButton() {
-  const commented = true;
-  const reposted = true;
+type Props = {
+  white?: boolean;
+};
+
+export default function ActionButton({ white }: Props) {
+  const commented = false;
+  const reposted = false;
   const liked = false;
 
   const onClickComment = () => {};
@@ -14,9 +18,7 @@ export default function ActionButton() {
 
   return (
     <div className={style.actionButtons}>
-      <div
-        className={cx(style.commentButton, { [style.commented]: commented })}
-      >
+      <div className={cx(style.commentButton, { [style.commented]: commented }, white && style.white)}>
         <button onClick={onClickComment}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
@@ -24,9 +26,9 @@ export default function ActionButton() {
             </g>
           </svg>
         </button>
-        <div className={style.count}>{1 || ""}</div>
+        <div className={style.count}>{1 || ''}</div>
       </div>
-      <div className={cx(style.repostButton, reposted && style.reposted)}>
+      <div className={cx(style.repostButton, reposted && style.reposted, white && style.white)}>
         <button onClick={onClickRepost}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
@@ -34,9 +36,9 @@ export default function ActionButton() {
             </g>
           </svg>
         </button>
-        <div className={style.count}>{1 || ""}</div>
+        <div className={style.count}>{1 || ''}</div>
       </div>
-      <div className={cx([style.heartButton, liked && style.liked])}>
+      <div className={cx([style.heartButton, liked && style.liked, white && style.white])}>
         <button onClick={onClickHeart}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
@@ -44,7 +46,7 @@ export default function ActionButton() {
             </g>
           </svg>
         </button>
-        <div className={style.count}>{0 || ""}</div>
+        <div className={style.count}>{0 || ''}</div>
       </div>
     </div>
   );

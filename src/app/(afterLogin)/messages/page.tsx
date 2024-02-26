@@ -1,3 +1,20 @@
-export default function Messages() {
-  return <div>messages</div>;
+import style from './message.module.css';
+import Room from '@/app/(afterLogin)/messages/_component/Room';
+
+export default function Message() {
+  return (
+    <main className={style.main}>
+      <div className={style.header}>
+        <h3>쪽지</h3>
+      </div>
+      <div className={style.roomChatInfo}>
+        <Room />
+        <Room />
+        <Room />
+        <Room />
+        <Room />
+        <Room />
+      </div>
+    </main>
+  );
 }
